@@ -1,0 +1,234 @@
+/*---------- HEADER(START) ----------*/
+.header {
+	background: #000e1b;
+	border-top: 1px solid #323138;
+	border-bottom: 1px solid #323138;
+	width: 100%;
+	z-index: 10;
+
+}
+body.home .header {
+	background: transparent;
+	position: absolute;
+}
+.header-wrap {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100px;
+}
+.header-logo {
+	position: relative;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 20px;
+	border-left: 1px solid #323138;
+	border-right: 1px solid #323138;
+	margin-right: 20px;
+}
+.header-logo__img {
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	width: 280px;
+	height: 100px;
+	margin-bottom: 10px;
+}
+.header-logo__corner {
+	width: 7px;
+	height: 7px;
+	position: absolute;
+	transition: .3s;
+}
+.header-logo:hover .header-logo__corner {
+	width: 40px;
+	height: 40px;
+}
+.header-logo__corner:nth-child(1) {
+	top: -1px;
+	left: -1px;
+	border-left: 1px solid #fff;
+	border-top: 1px solid #fff;
+}
+.header-logo__corner:nth-child(2) {
+	top: -1px;
+	right: -1px;
+	border-right: 1px solid #fff;
+	border-top: 1px solid #fff;
+}
+.header-logo__corner:nth-child(3) {
+	bottom: -1px;
+	left: -1px;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #fff;
+}
+.header-logo__corner:nth-child(4) {
+	bottom: -1px;
+	right: -1px;
+	border-bottom: 1px solid #fff;
+	border-right: 1px solid #fff;
+}
+.header-menu>ul {
+	display: flex;
+	gap: 35px;
+}
+.header-menu>ul>li>a {
+	position: relative;
+	display: flex;
+	color: var(--color-text-light);
+	font-size: 16px;
+	font-family: var(--font-main);
+	font-weight: 300;
+	opacity: 1;
+}
+.header-menu>ul>li>a:hover {
+	opacity: .7;
+}
+.header-menu>ul>li>a::after {
+	content: '';
+	position: absolute;
+	bottom: -5px;
+	width: 0%;
+	height: 1px;
+	background: #3d3d3d;
+	transition: ease .3s;
+	overflow: hidden;
+}
+.header-menu>ul>li>a:hover::after {
+	width: 100%;
+}
+
+.header-toggle-menu {
+	display: none;
+	height: 40px;
+	width: 40px;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	background: transparent;
+}
+.burger {
+	width: 34px;
+	height: 20px;
+	position: relative;
+	cursor: pointer;
+}
+.burger__line {
+	display: block;
+	width: 100%;
+	height: 1px;
+	position: absolute;
+	left: 0;
+	background-color: #E5E5E5;
+	;
+}
+.burger__line:first-child {
+	top: 0;
+}
+.burger__line:last-child {
+	bottom: 0;
+	width: 100%;
+}
+.burger__line--cross {
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: 100%;
+}
+.burger--opened .burger__line:first-child, .burger--opened .burger__line:last-child {
+	opacity: 0;
+	transition: transform 0.2s, opacity 0s 0.2s;
+}
+.burger--opened .burger__line:first-child {
+	transform: translateY(5px);
+}
+.burger--opened .burger__line:last-child {
+	transform: translateY(-5px);
+}
+.burger--opened .burger__line:nth-child(2) {
+	transform: rotate(45deg);
+}
+.burger--opened .burger__line:nth-child(3) {
+	transform: rotate(-45deg);
+}
+.burger--opened .burger__line--cross {
+	transition: transform 0.2s 0.2s;
+	width: 100%;
+}
+.burger--closed .burger__line--cross {
+	transition: transform 0.2s;
+}
+.burger--closed .burger__line:first-child, .burger--closed .burger__line:last-child {
+	transition: transform 0.2s 0.2s, opacity 0s 0.2s;
+}
+
+@media (max-width: 1199px) {
+	.header-wrap {
+		height: 60px;
+	}
+	.header-logo {
+		padding: 0 20px;
+	}
+	.header-logo__img {
+		width: 280px;
+		height: 60px;
+		margin-bottom: 0;
+	}
+	.header-menu>ul {
+		gap: 15px;
+	}
+}
+@media (max-width: 991px) {
+	.header-menu {
+		background: url(../../assets/images/background-menu.jpg) no-repeat center;
+		background-size: cover;
+		position: fixed;
+		top: 62px;
+		left: -100%;
+		height: calc(100% - 62px);
+		padding: 20px;
+		transition: left 300ms linear;
+		width: 250px;
+		z-index: 100;
+	}
+	.header-menu.open {
+		left: 0;
+		animation: elastic 150ms ease 300.5ms both;
+	}
+	.header-menu>ul {
+		flex-direction: column;
+	}
+	.header-toggle-menu {
+		display: flex;
+	}
+}
+
+@keyframes elastic {
+	0% {
+		/* border-radius: 50%; */
+		border-top-right-radius: 50% 50%;
+		border-bottom-right-radius: 50% 50%;
+	}
+	45% {
+		border-radius: 0;
+	}
+	65% {
+		border-top-right-radius: 40px 50%;
+		border-bottom-right-radius: 40px 50%;
+	}
+	80% {
+		border-radius: 0;
+	}
+	90% {
+		border-top-right-radius: 20px 50%;
+		border-bottom-right-radius: 20px 50%;
+	}
+	100% {
+		border-radius: 0;
+	}
+}
+/*---------- HEADER(END) ----------*/
