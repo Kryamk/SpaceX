@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/header/Header';
 import MainPage from './pages/MainPage/MainPage';
 import SimplePage from './pages/SimplePage/SimplePage';
@@ -13,7 +13,21 @@ const pages = [
 	{ url: 'kontakty', title: 'Контакты' },
 ]
 
+
+
 function App() {
+	const location = useLocation();
+	const {pathname} = location
+	
+	useEffect(()=> {
+		if (pathname === '/') {
+			document.body.classList.add('home')
+		} else {
+			document.body.classList.remove('home')
+		}
+	}, [pathname])
+
+
 	return (
 		<div className="App">
 			<Header />

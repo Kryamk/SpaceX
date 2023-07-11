@@ -1,5 +1,5 @@
-import React, { useCallback, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useRef, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
 import './Header.scss'
 import HeaderBurger from './HeaderBurger'
@@ -8,6 +8,8 @@ import HeaderNav from './HeaderNav'
 const Header = () => {
 	const [openedMenu, setOpenedMenu] = useState(false)
 	const burgerRef = useRef(null)
+	let location = useLocation()
+	console.log('Header ~ location:', location)
 
 	const handleOpenedMenu = () => {
 		setOpenedMenu(!openedMenu)
@@ -20,6 +22,8 @@ const Header = () => {
 		}
 		document.body.classList.remove('lock')
 	}
+
+
 
 	return (
 		<>
