@@ -1,5 +1,5 @@
-@import 'assets/style/fonts';
-@import 'assets/style/var';
+@import './fonts';
+@import './var';
 // @font-face {
 // 	font-family: "Museo Sans Cyrl";
 // 	src: url('./assets/fonts/MuseoSansCyrl-100.woff2') format('woff2');
@@ -37,7 +37,6 @@ li {
 }
 a {
 	text-decoration: none;
-	transition: color .3s;
 	color: var(--color-text-light);
 }
 a:hover {
@@ -47,8 +46,8 @@ button {
 	cursor: pointer;
 }
 .container {
-	width: 1200px;
-	max-width: 100%;
+	width: 100%;
+	max-width: 1200px;
 	padding: 0 15px;
 	margin: 0 auto;
 }

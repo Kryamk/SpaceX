@@ -16,7 +16,7 @@ body.home .header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 100px;
+	// height: 100px;
 }
 .header-logo {
 	position: relative;
@@ -24,49 +24,43 @@ body.home .header {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 10px 20px;
+	padding: 25px 15px 37px 20px;
 	border-left: 1px solid #323138;
 	border-right: 1px solid #323138;
-	margin-right: 20px;
 }
 .header-logo__img {
-	display: block;
-	max-width: 100%;
-	max-height: 100%;
-	object-fit: contain;
 	width: 280px;
-	height: 100px;
-	margin-bottom: 10px;
+	// margin-bottom: 10px;
 }
 .header-logo__corner {
 	width: 7px;
 	height: 7px;
 	position: absolute;
-	transition: .3s;
+	transition: width .3s ease-in-out, height .3s ease-in-out;
 }
 .header-logo:hover .header-logo__corner {
 	width: 40px;
 	height: 40px;
 }
-.header-logo__corner:nth-child(1) {
+.header-logo__corner--left-top {
 	top: -1px;
 	left: -1px;
 	border-left: 1px solid #fff;
 	border-top: 1px solid #fff;
 }
-.header-logo__corner:nth-child(2) {
+.header-logo__corner--right-top {
 	top: -1px;
 	right: -1px;
 	border-right: 1px solid #fff;
 	border-top: 1px solid #fff;
 }
-.header-logo__corner:nth-child(3) {
+.header-logo__corner--right-bottom {
 	bottom: -1px;
 	left: -1px;
 	border-bottom: 1px solid #fff;
 	border-left: 1px solid #fff;
 }
-.header-logo__corner:nth-child(4) {
+.header-logo__corner--left-bottom {
 	bottom: -1px;
 	right: -1px;
 	border-bottom: 1px solid #fff;
@@ -83,10 +77,10 @@ body.home .header {
 	font-size: 16px;
 	font-family: var(--font-main);
 	font-weight: 300;
-	opacity: 1;
+	transition: color .3s ease-in-out;
 }
 .header-menu>ul>li>a:hover {
-	opacity: .7;
+	color: var(--color-text-light-hover);
 }
 .header-menu>ul>li>a::after {
 	content: '';
@@ -95,7 +89,7 @@ body.home .header {
 	width: 0%;
 	height: 1px;
 	background: #3d3d3d;
-	transition: ease .3s;
+	transition: width .3s ease-in-out;
 	overflow: hidden;
 }
 .header-menu>ul>li>a:hover::after {
@@ -168,15 +162,15 @@ body.home .header {
 
 @media (max-width: 1199px) {
 	.header-wrap {
-		height: 60px;
+		// height: 60px;
 	}
 	.header-logo {
-		padding: 0 20px;
+		padding: 10px 20px 15px 20px;
 	}
 	.header-logo__img {
-		width: 280px;
-		height: 60px;
-		margin-bottom: 0;
+		// width: 280px;
+		// height: 60px;
+		// margin-bottom: 0;
 	}
 	.header-menu>ul {
 		gap: 15px;
@@ -187,9 +181,11 @@ body.home .header {
 		background: url(../../assets/images/background-menu.jpg) no-repeat center;
 		background-size: cover;
 		position: fixed;
-		top: 62px;
 		left: -100%;
-		height: calc(100% - 62px);
+		// top: 62px;
+		// height: calc(100% - 62px);
+		top: var(--header-height);
+		height: calc(100% - var(--header-height));
 		padding: 20px;
 		transition: left 300ms linear;
 		width: 250px;
@@ -204,6 +200,12 @@ body.home .header {
 	}
 	.header-toggle-menu {
 		display: flex;
+	}
+}
+
+@media (max-width: 575px) {
+	.header-logo__img {
+		width: 180px;
 	}
 }
 

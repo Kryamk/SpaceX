@@ -18,7 +18,7 @@ const pages = [
 function App() {
 	const location = useLocation();
 	const {pathname} = location
-	
+
 	useEffect(()=> {
 		if (pathname === '/') {
 			document.body.classList.add('home')

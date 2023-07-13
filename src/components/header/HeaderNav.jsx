@@ -12,7 +12,7 @@ function HeaderNav({ openedMenu, onCloseMenu, burgerRef }) {
 	}, [pathname])
 
 	return (
-		<nav ref={navRef} className={`header-menu ${openedMenu ? 'open' : 'false'} `}>
+		<nav ref={navRef} className={`header-menu ${openedMenu ? 'open' : ''}`}>
 			<ul>
 				<li><Link to='/'>Главная</Link></li>
 				<li><Link to="/tehnologiya">Технология</Link></li>
