@@ -23,7 +23,9 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		publicPath: '/',
-		clean: true,
+		clean: {
+			keep: /feedback/
+		},
 		filename: '[name].bundle.[contenthash].js',
 		assetModuleFilename: 'assets/images/[name][ext]',
 	},
