@@ -10,7 +10,6 @@ const Header = () => {
 	const burgerRef = useRef(null)
 	const headerRef = useRef(null)
 	let location = useLocation()
-	console.log('Header ~ location:', location)
 
 	const handleOpenedMenu = () => {
 		setOpenedMenu(!openedMenu)

@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './MainPage.scss'
+import FormCallback from '../../components/FormCallback/FormCallback'
+import { Modal } from 'antd'
 
 const MainPage = () => {
+	const [isModalOpen, setIsModalOpen] = useState(false)
+
+	const showModal = () => setIsModalOpen(true)
+	const closeModal = () => setIsModalOpen(false)
+
 	return (
 		<>
 			<section className="hero">
@@ -34,7 +41,7 @@ const MainPage = () => {
 							</div>
 						</div>
 						<div className="hero-btn-wrap">
-							<button className="hero-btn" >
+							<button className="hero-btn" type="button" onClick={showModal}>
 								<div className="hero-btn__corner1" />
 								<div className="hero-btn__text">Начать путешествие</div>
 								<div className="hero-btn__corner2" />
@@ -44,6 +51,10 @@ const MainPage = () => {
 					</div>
 				</div>
 			</section>
+
+			<Modal title="Форма заказа" open={isModalOpen} onCancel={closeModal} footer={false}>
+				<FormCallback onCloseModal={closeModal}/>
+			</Modal>
 		</>
 	)
 }
