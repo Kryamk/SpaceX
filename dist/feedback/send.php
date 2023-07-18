@@ -22,7 +22,7 @@ $mail = new PHPMailer(true);
 
 try {
 	//Server settings
-	$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+	// $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
 	$mail->isSMTP();                                            //Send using SMTP
 	$mail->Host       = 'smtp.timeweb.ru';                     //Set the SMTP server to send through
 	$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -33,6 +33,7 @@ try {
 	$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 	
 	$mail->CharSet = 'UTF-8';
+	$mail->Encoding = 'base64';
 
 	//Recipients
 	$mail->setFrom('info@2sia-test.tmweb.ru', 'Space-X');

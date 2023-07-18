@@ -6,26 +6,14 @@ import { rules } from '../../utils/rules';
 
 function FormCallback({ onCloseModal }) {
 	const [form] = Form.useForm()
-	console.dir(form)
 
 	const onFinish = async (values) => {
-
-		console.log('Success:', values);
-
-		form.setFields([
-			{
-				name: 'name',
-				errors: [],
-			},
-		]);
-
-
-
 
 		try {
 			const formData = new FormData();
 			formData.append('action', 'callback');
 			for (const key in values) {
+
 				if (values[key]) {
 					formData.append(key, values[key]);
 				}
@@ -36,38 +24,35 @@ function FormCallback({ onCloseModal }) {
 
 			if (!res.ok) {
 				console.log(res.status)
+				throw new Error('Статус' + res.status);
 			}
 			const json = await res.json()
-			console.log('onFinish ~ json:', json)
-
-			if (!json.valid) {
-				form.setFields(json.fields)
-			} else {
+			console.log('json:', json)
+			form.setFields(json.fields)
+			if (json.valid) {
+				console.log('success!!!!');
+				alert('Форма успешно отправлена')
 				form.resetFields()
-				// onCloseModal()
+				onCloseModal()
 			}
-
 		} catch (error) {
 			console.log(error)
 		}
-
-
 	}
-
 
 
 	return (
 		<Form onFinish={onFinish} layout="vertical" form={form}>
-			<Form.Item label="Имя" name="name" rules1={[rules.required()]}>
+			<Form.Item label="Имя" name="name" rules={[rules.required()]}>
 				<Input />
 			</Form.Item>
-			<Form.Item label="Фамилия" name="lastname" rules1={[rules.required()]}>
+			<Form.Item label="Фамилия" name="lastname" rules={[rules.required()]}>
 				<Input />
 			</Form.Item>
-			<Form.Item label="Телефон или почта" name="telEmail" rules1={[rules.required()]}>
+			<Form.Item label="Телефон или почта" name="telEmail" rules={[rules.required()]}>
 				<Input />
 			</Form.Item>
-			<Form.Item label="Сообщение" name="message" rules1={[rules.required()]}>
+			<Form.Item label="Сообщение" name="message" rules={[rules.required()]}>
 				<Input.TextArea />
 			</Form.Item>
 			<Row justify="center">
