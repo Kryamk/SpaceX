@@ -60,6 +60,7 @@ const MainPage = () => {
 			<Modal title="Форма заказа" open={isModalOpen} onCancel={closeModal} footer={false}>
 				<FormCallback onCloseModal={closeModal}/>
 			</Modal>
+			<input type="email" />
 		</>
 	)
 }
