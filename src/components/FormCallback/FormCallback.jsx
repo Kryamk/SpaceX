@@ -38,10 +38,10 @@ function FormCallback({ onCloseModal }) {
 				throw new Error('Статус' + res.status);
 			}
 			const json = await res.json()
-			console.log('json:', json)
+			// console.log('json:', json)
 			form.setFields(json.fields)
 			if (json.valid) {
-				console.log('success!!!!');
+				// console.log('success!!!!');
 
 				setTimeout(() => {
 					success();

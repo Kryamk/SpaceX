@@ -3,7 +3,6 @@ export const rules = {
 	text: (message = 'Должно быть менее 15 символов') => ({ max: 15, message }),
 	telOrEmail: (message = 'Некорректый телефон или почта') => ({
 		validator(_, value) {
-			console.log(value)
 			if (value === '' || value === undefined) {
 				return Promise.resolve();
 			}
