@@ -52,6 +52,7 @@ function FormCallback({ onCloseModal }) {
 					onCloseModal()
 				}, 1500);
 			}
+			setLoading(false)
 		} catch (error) {
 			console.log(error)
 			setLoading(false)
