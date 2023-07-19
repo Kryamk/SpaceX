@@ -30,8 +30,8 @@ function FormCallback({ onCloseModal }) {
 				}
 			}
 
-			// const res = await fetch('http://space-x.nya', { method: 'POST', body: formData })
-			const res = await fetch('/feedback/send.php', { method: 'POST', body: formData })
+			const res = await fetch('http://space-x.nya', { method: 'POST', body: formData })
+			// const res = await fetch('/feedback/send.php', { method: 'POST', body: formData })
 
 			if (!res.ok) {
 				console.log(res.status)
@@ -64,10 +64,10 @@ function FormCallback({ onCloseModal }) {
 		<>
 			{contextHolder}
 			<Form onFinish={onFinish} layout="vertical" form={form}>
-				<Form.Item label="Имя" name="name" rules={[rules.required(), rules.text()]}>
+				<Form.Item label="Имя" name="name" rules={[rules.required()]}>
 					<Input />
 				</Form.Item>
-				<Form.Item label="Фамилия" name="lastname" rules={[rules.required(), rules.text()]}>
+				<Form.Item label="Фамилия" name="lastname" rules={[rules.required()]}>
 					<Input />
 				</Form.Item>
 				<Form.Item label="Телефон или почта" name="telEmail" rules={[rules.required(), rules.telOrEmail()]}>
