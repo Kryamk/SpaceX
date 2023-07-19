@@ -30,8 +30,8 @@ function FormCallback({ onCloseModal }) {
 				}
 			}
 
-			const res = await fetch('http://space-x.nya', { method: 'POST', body: formData })
-			// const res = await fetch('/feedback/send.php', { method: 'POST', body: formData })
+			// const res = await fetch('http://space-x.nya', { method: 'POST', body: formData })
+			const res = await fetch('/feedback/send.php', { method: 'POST', body: formData })
 
 			if (!res.ok) {
 				console.log(res.status)
