@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
-
+include './../../config.php';
 
 //Load Composer's autoloader
 // require 'vendor/autoload.php';
@@ -20,14 +20,14 @@ $mail = new PHPMailer(true);
 // echo json_encode($mail);
 
 
-try {
+// try {
 	//Server settings
 	// $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
 	$mail->isSMTP();                                            //Send using SMTP
 	$mail->Host       = 'smtp.timeweb.ru';                     //Set the SMTP server to send through
 	$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-	$mail->Username   = 'info@2sia-test.tmweb.ru';                     //SMTP username
-	$mail->Password   = '8GhQa3DC';                               //SMTP password
+	$mail->Username   = SMTP_EMAIL;                     //SMTP username
+	$mail->Password   = SMTP_PASSWORD;                               //SMTP password
 	// $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
 	$mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
 	$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
@@ -36,8 +36,8 @@ try {
 	$mail->Encoding = 'base64';
 
 	//Recipients
-	$mail->setFrom('info@2sia-test.tmweb.ru', 'Space-X');
-	$mail->addAddress('smirnov.dev.sagirov@gmail.com', 'Joe User');     //Add a recipient
+	$mail->setFrom(SMTP_EMAIL, 'Space-X');
+	$mail->addAddress(SEND_EMAIL, 'Joe User');     //Add a recipient
 	// $mail->addAddress('ellen@example.com');               //Name is optional
 	// $mail->addReplyTo('info@example.com', 'Information');
 
@@ -57,6 +57,6 @@ try {
 	if( $_POST['action'] == 'callback' ) require 'callback.php';
 
 
-} catch (Exception $e) {
-	echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}
+// } catch (Exception $e) {
+// 	echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+// }

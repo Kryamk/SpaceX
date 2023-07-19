@@ -70,18 +70,23 @@ if (validate($fields)) {
 
 	$validation['valid'] = true;
 
-	if (mb_strlen($fields['name']['value']) >= 15) {
-		$validation['fields'][] = ['name' => 'name', 'errors'=>["Поле {$fields['name']['field_name']} должно быть меньше 15 символов"] ];
-		$validation['valid'] = false;
-	}
-	if (mb_strlen($fields['lastname']['value']) >= 15) {
-		$validation['fields'][] = ['name' => 'lastname', 'errors'=>["Поле {$fields['lastname']['field_name']} должно быть меньше 15 символов"] ];
-		$validation['valid'] = false;
-	}
+	// if (mb_strlen($fields['name']['value']) >= 15) {
+	// 	$validation['fields'][] = ['name' => 'name', 'errors'=>["Поле {$fields['name']['field_name']} должно быть меньше 15 символов"] ];
+	// 	$validation['valid'] = false;
+	// }
+	// if (mb_strlen($fields['lastname']['value']) >= 15) {
+	// 	$validation['fields'][] = ['name' => 'lastname', 'errors'=>["Поле {$fields['lastname']['field_name']} должно быть меньше 15 символов"] ];
+	// 	$validation['valid'] = false;
+	// }
 
 	function tel_or_email($fields) {
 		global $validation;
-		$pattern_phone = '/^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/';
+		$pattern_phone = '/^\+?\d{1,4}?[-\s]?\(?\d{1,3}?\)?[-\s]?\d{1,4}[-\s]?\d{1,4}[-\s]?\d{1,9}$/';
+		# $email_phone = "/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/";
+
+		// if(preg_match($email_phone, $fields['telEmail']['value'])) {
+		// 	$validation['telEmail'] = 'Email';
+		// }
 		if(filter_var($fields['telEmail']['value'], FILTER_VALIDATE_EMAIL)) {
 			$validation['telEmail'] = 'Email';
 		}

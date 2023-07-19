@@ -9,10 +9,17 @@ function FormCallback({ onCloseModal }) {
 	const [messageApi, contextHolder] = message.useMessage();
 	const [loading, setLoading] = useState(false)
 
-	const success = () => {
+	const successMessage = () => {
 		messageApi.open({
 			type: 'success',
 			content: 'Ваше сообщение успешно отправлено',
+		});
+	};
+
+	const errorMessage = () => {
+		messageApi.open({
+			type: 'error',
+			content: 'Извините, что-то пошло не так',
 		});
 	};
 
@@ -44,7 +51,7 @@ function FormCallback({ onCloseModal }) {
 				// console.log('success!!!!');
 
 				setTimeout(() => {
-					success();
+					successMessage();
 					form.resetFields()
 					setLoading(false)
 				}, 1000);
@@ -56,6 +63,7 @@ function FormCallback({ onCloseModal }) {
 		} catch (error) {
 			console.log(error)
 			setLoading(false)
+			errorMessage()
 		}
 
 	}
